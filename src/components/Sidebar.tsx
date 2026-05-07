@@ -4,7 +4,7 @@ import { Home, GamepadIcon, Puzzle, BookOpen, Settings as SettingsIcon } from 'l
 
 interface SidebarProps {
   currentPage: string;
-  onPageChange: (page: any) => void;
+  onPageChange: (page: string) => void;
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ currentPage, onPageChange }) => {

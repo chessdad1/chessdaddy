@@ -1,0 +1,92 @@
+{
+  "name": "chessdaddy",
+  "version": "1.0.0",
+  "description": "Stockfish-powered chess analysis desktop application",
+  "main": "dist/main.js",
+  "homepage": "./",
+  "author": "typp3212",
+  "license": "MIT",
+  "scripts": {
+    "react-start": "react-scripts start",
+    "react-build": "react-scripts build",
+    "react-test": "react-scripts test",
+    "react-eject": "react-scripts eject",
+    "electron-start": "wait-on http://localhost:3000 && electron .",
+    "electron-dev": "concurrently \"npm run react-start\" \"wait-on http://localhost:3000 && electron .\"",
+    "electron-build": "npm run react-build && electron-builder",
+    "build": "npm run react-build && electron-builder",
+    "build-exe": "npm run react-build && electron-builder --win --publish never",
+    "start": "concurrently \"npm run react-start\" \"wait-on http://localhost:3000 && electron .\""
+  },
+  "dependencies": {
+    "axios": "^1.6.2",
+    "chess.js": "^1.0.0-beta.7",
+    "chessground": "^9.1.0",
+    "electron-squirrel-startup": "^1.1.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "stockfish": "^16.1.0"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.5",
+    "@electron-forge/maker-squirrel": "^6.0.5",
+    "@electron-forge/maker-zip": "^6.0.5",
+    "@electron-forge/maker-deb": "^6.0.5",
+    "@electron-forge/maker-rpm": "^6.0.5",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "concurrently": "^7.6.0",
+    "electron": "^27.0.0",
+    "electron-builder": "^24.6.4",
+    "typescript": "^5.2.2",
+    "wait-on": "^7.0.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "build": {
+    "appId": "com.chessdaddy.app",
+    "productName": "ChessDaddy",
+    "files": [
+      "dist/",
+      "build/",
+      "node_modules/",
+      "public/",
+      "package.json"
+    ],
+    "directories": {
+      "buildResources": "public"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "certificateFile": null,
+      "certificatePassword": null,
+      "signingHashAlgorithms": [
+        "sha256"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "ChessDaddy"
+    },
+    "portable": {
+      "artifactName": "ChessDaddy.exe"
+    }
+  }
+}

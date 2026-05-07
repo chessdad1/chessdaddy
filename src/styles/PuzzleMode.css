@@ -1,6 +1,6 @@
 .puzzle-mode {
   padding: 40px;
-  max-width: 1000px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
@@ -11,7 +11,7 @@
 .puzzle-header h2 {
   font-size: 32px;
   font-weight: 700;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   color: var(--light-text);
 }
 
@@ -20,11 +20,12 @@ html.dark-mode .puzzle-header h2 {
 }
 
 .stats-bar {
-  display: flex;
-  gap: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
   background-color: var(--light-surface);
-  padding: 16px 20px;
-  border-radius: 8px;
+  padding: 20px;
+  border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -35,62 +36,205 @@ html.dark-mode .stats-bar {
 .stat {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-weight: 600;
+  gap: 12px;
   color: var(--primary-color);
 }
 
-.rating {
-  background-color: var(--primary-color);
-  color: white;
-  padding: 6px 12px;
-  border-radius: 4px;
+.stat svg {
+  flex-shrink: 0;
+}
+
+.stat > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat .label {
   font-size: 12px;
+  color: #999;
+  font-weight: 500;
+}
+
+.stat .value {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primary-color);
 }
 
 .puzzle-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 40px;
-  align-items: flex-start;
+  align-items: start;
 }
 
 .puzzle-board {
-  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.puzzle-board > div:first-child {
+  justify-self: start;
 }
 
 .puzzle-info {
-  flex: 1;
   background-color: var(--light-surface);
-  padding: 24px;
+  padding: 16px;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 html.dark-mode .puzzle-info {
   background-color: var(--dark-surface);
 }
 
-.puzzle-info h3 {
-  font-size: 18px;
+.puzzle-theme {
+  font-size: 14px;
+  color: var(--primary-color);
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  text-transform: capitalize;
+}
+
+.puzzle-rating {
+  font-size: 12px;
+  color: #999;
+  margin: 0;
+}
+
+.puzzle-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.puzzle-instructions {
+  background-color: var(--light-surface);
+  padding: 20px;
+  border-radius: 8px;
+  border-left: 4px solid var(--primary-color);
+}
+
+html.dark-mode .puzzle-instructions {
+  background-color: var(--dark-surface);
+}
+
+.puzzle-instructions h3 {
+  color: var(--primary-color);
   margin-bottom: 12px;
+  font-size: 16px;
+}
+
+.instruction-text {
+  color: #666;
+  font-size: 14px;
+  margin: 0 0 12px 0;
+  line-height: 1.5;
+}
+
+html.dark-mode .instruction-text {
+  color: #aaa;
+}
+
+.message {
+  padding: 12px;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+  margin-top: 12px;
+}
+
+.message.success {
+  background-color: #E8F5E9;
+  color: #2E7D32;
+  border: 1px solid #4CAF50;
+}
+
+.message.error {
+  background-color: #FFEBEE;
+  color: #C62828;
+  border: 1px solid #F44336;
+}
+
+.puzzle-stats {
+  background-color: var(--light-surface);
+  padding: 16px;
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+html.dark-mode .puzzle-stats {
+  background-color: var(--dark-surface);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-item .label {
+  font-size: 12px;
+  color: #999;
+}
+
+.stat-item .value {
+  font-size: 18px;
+  font-weight: 700;
   color: var(--primary-color);
 }
 
-.difficulty-info {
-  color: #999;
-  margin-bottom: 20px;
+.puzzle-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.hint-btn,
+.skip-btn {
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
   font-size: 14px;
 }
 
+.hint-btn {
+  background-color: #FFD700;
+  color: #000;
+}
+
+.hint-btn:hover:not(:disabled) {
+  background-color: #FFC700;
+}
+
+.hint-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .skip-btn {
-  width: 100%;
-  padding: 12px;
   background-color: #FF9800;
   color: white;
-  font-weight: 600;
-  border-radius: 6px;
 }
 
 .skip-btn:hover {
   background-color: #FB8C00;
+}
+
+@media (max-width: 1024px) {
+  .puzzle-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .puzzle-header h2 {
+    font-size: 24px;
+  }
 }

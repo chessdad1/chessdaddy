@@ -1,0 +1,58 @@
+.evaluation-bar-container {
+  margin: 12px 0;
+}
+
+.evaluation-bar {
+  display: flex;
+  height: 30px;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+html.dark-mode .evaluation-bar {
+  border-color: var(--dark-border);
+}
+
+.white-bar {
+  background-color: #F0D9B5;
+  transition: width 0.3s ease;
+}
+
+html.dark-mode .white-bar {
+  background-color: #8B7355;
+}
+
+.black-bar {
+  background-color: #B58863;
+  transition: width 0.3s ease;
+}
+
+html.dark-mode .black-bar {
+  background-color: #5D4037;
+}
+
+.eval-values {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.white-eval {
+  color: #333;
+}
+
+html.dark-mode .white-eval {
+  color: #EEE;
+}
+
+.black-eval {
+  color: #EEE;
+}
+
+html.dark-mode .black-eval {
+  color: #333;
+}

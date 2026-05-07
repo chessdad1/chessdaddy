@@ -1,0 +1,94 @@
+.fen-input-section {
+  background-color: var(--light-surface);
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+html.dark-mode .fen-input-section {
+  background-color: var(--dark-surface);
+}
+
+.fen-input-group {
+  margin-bottom: 12px;
+}
+
+.fen-input-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 13px;
+  color: var(--primary-color);
+}
+
+.fen-input-wrapper {
+  display: flex;
+  gap: 8px;
+}
+
+.fen-input-wrapper input {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 12px;
+  font-family: 'Courier New', monospace;
+}
+
+html.dark-mode .fen-input-wrapper input {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+  border-color: var(--dark-border);
+}
+
+.copy-btn {
+  padding: 8px 12px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.copy-btn:hover {
+  background-color: var(--secondary-color);
+}
+
+.fen-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.action-btn {
+  flex: 1;
+  padding: 10px 12px;
+  background-color: var(--light-surface);
+  color: var(--light-text);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+html.dark-mode .action-btn {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+  border-color: var(--dark-border);
+}
+
+.action-btn:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.action-btn.danger {
+  color: #F44336;
+}
+
+.action-btn.danger:hover {
+  border-color: #F44336;
+  background-color: rgba(244, 67, 54, 0.1);
+}

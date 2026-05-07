@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../styles/GameAnalyzer.css';
 import { AlertCircle, Download, BarChart3 } from 'lucide-react';
 import { ChessComAPI } from '../services/ChessComAPI';
-import { GameAnalyzer } from '../services/GameAnalyzer';
+import { GameAnalyzer as GameAnalyzerService } from '../services/GameAnalyzer';
 import { PGNParser } from '../services/PGNParser';
 import Chessboard from './Chessboard';
 
@@ -25,7 +25,7 @@ interface GameAnalysisResult {
   blunderCount: number;
 }
 
-const GameAnalyzer: React.FC = () => {
+const GameAnalyzerComponent: React.FC = () => {
   const [username, setUsername] = useState('');
   const [games, setGames] = useState<Game[]>([]);
   const [loading, setLoading] = useState(false);
@@ -78,8 +78,8 @@ const GameAnalyzer: React.FC = () => {
     setError('');
 
     try {
-      const analyzer = new GameAnalyzer();
-      const result = await analyzer.analyzeGame(game.pgn, 20, (progress) => {
+      const analyzer = new GameAnalyzerService();
+      const result = await analyzer.analyzeGame(game.pgn, 20, (progress: number) => {
         console.log(`Analysis progress: ${(progress * 100).toFixed(0)}%`);
       });
 
@@ -214,4 +214,4 @@ const GameAnalyzer: React.FC = () => {
   );
 };
 
-export default GameAnalyzer;
+export default GameAnalyzerComponent;

@@ -46,9 +46,9 @@ const AnalysisBoard: React.FC = () => {
   const analyzePosition = async (position: string) => {
     setIsAnalyzing(true);
     try {
-      const eval = await engine.evaluatePosition(position, analysisDepth);
+      const evaluation = await engine.evaluatePosition(position, analysisDepth);
       const best = await engine.getBestMove(position, analysisDepth);
-      setEvaluation(eval);
+      setEvaluation(evaluation);
       setBestMove(best);
     } catch (error) {
       console.error('Analysis error:', error);
@@ -76,7 +76,7 @@ const AnalysisBoard: React.FC = () => {
         
         for (const move of game.moves) {
           try {
-            chess.move(move, { sloppy: true });
+            chess.move(move);
           } catch (e) {
             break;
           }

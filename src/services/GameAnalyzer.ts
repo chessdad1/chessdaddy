@@ -40,7 +40,7 @@ export class GameAnalyzer {
 
     // Extract moves from PGN
     try {
-      chess.load_pgn(pgn);
+      chess.load(pgn);
     } catch (e) {
       throw new Error('Invalid PGN format');
     }

@@ -19,7 +19,7 @@ export class PuzzleGenerator {
     const chess = new Chess();
 
     try {
-      chess.load_pgn(pgn);
+      chess.load(pgn);
       const moves = chess.moves({ verbose: true });
 
       // Analyze significant positions

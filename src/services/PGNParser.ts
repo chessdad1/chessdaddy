@@ -20,7 +20,7 @@ export class PGNParser {
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i].trim();
       if (line.startsWith('[')) {
-        const match = line.match(/\[(\w+)\s+"(.*)"\]/);
+        const match = line.match(/\[(\w+)\s+"(.*)"/]);
         if (match) {
           headers[match[1]] = match[2];
         }
@@ -69,7 +69,7 @@ export class PGNParser {
       }
 
       try {
-        const move = chess.move(token, { sloppy: true });
+        const move = chess.move(token);
         if (move) {
           moves.push(`${move.from}${move.to}`);
         }
@@ -86,7 +86,7 @@ export class PGNParser {
    */
   static toAlgebraic(from: string, to: string, chess: Chess): string {
     try {
-      const move = chess.move({ from, to, promotion: 'q' }, { sloppy: true });
+      const move = chess.move({ from, to, promotion: 'q' });
       if (move) {
         return move.san;
       }
@@ -105,7 +105,7 @@ export class PGNParser {
       const game = this.parseGame(pgn);
       
       for (const move of game.moves) {
-        const result = chess.move(move, { sloppy: true });
+        const result = chess.move(move);
         if (!result) {
           return false;
         }
@@ -150,7 +150,7 @@ export class PGNParser {
         pgn += `${Math.floor(i / 2) + 1}. `;
       }
 
-      const move = chess.move(moves[i], { sloppy: true });
+      const move = chess.move(moves[i]);
       if (move) {
         pgn += `${move.san} `;
       }

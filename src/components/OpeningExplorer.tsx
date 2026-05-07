@@ -44,7 +44,7 @@ const OpeningExplorer: React.FC = () => {
   };
 
   const handleMove = (from: string, to: string) => {
-    const moveObj = chess.move({ from, to }, { sloppy: true });
+    const moveObj = chess.move({ from, to });
     if (moveObj) {
       const newFen = chess.fen();
       setFen(newFen);

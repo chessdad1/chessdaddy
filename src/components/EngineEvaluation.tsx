@@ -13,21 +13,21 @@ const EngineEvaluation: React.FC<EngineEvaluationProps> = ({
   bestMove,
   isAnalyzing
 }) => {
-  const formatEvaluation = (eval: number | null): string => {
-    if (eval === null) return '0.00';
-    const value = Math.abs(eval);
+  const formatEvaluation = (evaluationValue: number | null): string => {
+    if (evaluationValue === null) return '0.00';
+    const value = Math.abs(evaluationValue);
     if (value > 1000) {
-      return eval > 0 ? `+M${Math.ceil(value / 100)}` : `-M${Math.ceil(value / 100)}`;
+      return evaluationValue > 0 ? `+M${Math.ceil(value / 100)}` : `-M${Math.ceil(value / 100)}`;
     }
-    return ((eval) / 100).toFixed(2);
+    return ((evaluationValue) / 100).toFixed(2);
   };
 
-  const getEvaluationColor = (eval: number | null): string => {
-    if (eval === null) return '#888';
-    if (eval > 300) return '#4CAF50'; // Green - winning
-    if (eval > 100) return '#8BC34A'; // Light green - better
-    if (eval < -300) return '#F44336'; // Red - losing
-    if (eval < -100) return '#FF9800'; // Orange - worse
+  const getEvaluationColor = (evaluationValue: number | null): string => {
+    if (evaluationValue === null) return '#888';
+    if (evaluationValue > 300) return '#4CAF50'; // Green - winning
+    if (evaluationValue > 100) return '#8BC34A'; // Light green - better
+    if (evaluationValue < -300) return '#F44336'; // Red - losing
+    if (evaluationValue < -100) return '#FF9800'; // Orange - worse
     return '#FFC107'; // Yellow - roughly equal
   };
 

@@ -100,7 +100,7 @@ export class PuzzleSystem {
 
     for (let i = 0; i < moves.length; i++) {
       const moveStr = moves[i];
-      const move = chess.move(moveStr, { sloppy: true });
+      const move = chess.move(moveStr);
 
       if (!move) {
         return false;
